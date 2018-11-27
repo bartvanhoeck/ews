@@ -1,0 +1,47 @@
+{% set nodes = craft.navigation.nodes()
+    .handle('hoofdmenu')
+    .level(1)
+    .all() %}
+			
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top" role="navigation">
+    <div class="container no-override">
+      <a class="navbar-brand" href="index.html">
+		  {% for block in bedrijfsgegevens.gegevens.all() %}
+			{% set logo = block.bedrijfslogo.one() %}
+		  <img src="{{ logo.url }}" class="d-none d-lg-inline mr-2" style="height: 145px; width: 145px; margin: 5px 0;"/>
+		  {% endfor %}
+        
+        <span class="d-block d-sm-none">Earth Wind &amp; Solar energy</span>
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse">
+        <ul class="navbar-nav">
+          {% nav node in nodes %}
+<!--					IF ACTIVE CHOOSE ACTIVE CLASS-->
+<!--					<li class="nav-item active">-->					
+				{% if node.children is empty %}
+					<li class="nav-item{% if node.active %} active{% endif %}">
+						<a class="nav-link" style="font-size: 1.2em;" href="{{ node.url}}">{{ node.title  }}</a>
+					</li>
+				{% else %}
+					<li class="nav-item dropdown">
+						<a href="#" style="font-size: 1.2em;" class="nav-link dropdown-toggle" data-toggle="dropdown">
+						  {{ node.title  }}
+						  <i class="ion-chevron-down"></i>
+						</a>
+						<div class="dropdown-menu" role="menu">
+							{% for childNode in node.children.all() %}
+								<a class="dropdown-item"  style="font-size: 1.1em;" href="{{ childNode.url}}">{{ childNode.title  }}</a>
+							{% endfor %}
+						</div>
+					</li>
+				{% endif %}
+					
+			{% endnav %}
+        </ul>
+      </div>
+    </div>
+  </nav>

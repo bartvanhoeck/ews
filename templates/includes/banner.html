@@ -1,0 +1,28 @@
+{% set bannerImage = banner.afbeelding.one() %}
+<script type="text/javascript">
+    $(function () {
+      if (!window.utils.isMobile()) {
+        // parallax header
+        $(window).scroll(function() {
+          var scroll = $(window).scrollTop(), 
+          slowScroll = scroll/4,
+          slowBg = slowScroll;
+
+          $('.index-app-hero').css("background-position", "center " + -slowBg + "px");
+        });
+      }
+    });
+  </script>
+
+  <div class="index-app-hero" style="background: url({{bannerImage.url}});background-position: center 0;background-size: cover;background-attachment: fixed; height: {{height}}; padding-top: 150px; overflow: hidden; position: relative;">
+  	<div class="container">
+	  <h2 class="customFadeInUp">
+		{{ banner.titel }}
+	  </h2>
+	  <span class="customFadeInUp">
+		{{ banner.korteInfo }}
+	  </span>
+
+	  <a href="#" class="btn-pill btn-pill-success btn-pill-lg customFadeInUp">Vraag een offerte aan?</a>
+    </div>
+  </div>

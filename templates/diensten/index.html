@@ -1,0 +1,97 @@
+{% set homeEntry = craft.entries().section('ewsEnergy').one() %}
+
+{% extends "_layout" %}
+
+{% set title = 'Diensten' %}
+
+{% block content %}
+
+{% include 'includes/mainNav.html'%}
+
+  
+<!-- load banner -->
+{% for banner in homeEntry.banner.all() %}
+	{% include 'includes/banner.html' with {'banner' : banner, 'height' : '328px'}%}
+{% endfor %}
+	
+
+	
+	
+
+  
+	<div class="blog-post-alt">
+    <div class="container">
+      <h3 class="blog-post-title">
+        <strong>Zonnepanelen:</strong> Lorem ipsum dolor.
+        <img src="images/icons/waves.png">
+      </h3>
+      <div class="blog-post-header">
+<!--
+        <div class="blog-post-author">
+          <img src="images/uifaces/10.jpg">
+          By <span>Anne Williams</span>
+        </div>
+-->
+        <div class="blog-post-share">
+          Share this post: 
+          <a href="#">
+            <i class="ion-social-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="ion-social-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="blog-post-content">
+        <p>
+          Spacial is an advanced theme solution for desktop, tablet, and mobile devices. It works in all browsers and your clients can pay instantly, to improve their experience at all times anywhere they go. Pick the pages that describe your business the best and improve your users experience. Track your progress and learn along all the way. Make changes and the rest is taken care automatically.
+        </p>
+        <p>
+          Spacial has both a web app and an android app to make your website easy and always available. It offers you all the designs in collaboration with some smart people. Your projects will look great everywhere you go. Use new components that come included!
+        </p>
+ 	
+        <p>
+          Spacial is designed to make showing off your best projects extremely fast and simple. There are many ways to configure. Just go to the source, make changes and the rest is taken care automatically.
+        </p>
+        <p>
+          Spacial is an advanced theme solution for desktop, tablet, and mobile devices. <a href="#">It works in all browsers</a> and your clients can pay instantly, to improve their experience at all times anywhere they go. Pick the pages that describe your business the best and improve your users experience. Track your progress and learn along all the way.
+        </p>
+         	 <a href="#" class="btn-pill btn-pill-success btn-pill-lg customFadeInUp">Vraag een offerte aan?</a>	
+      </div>
+    </div>
+  </div>
+
+
+	<div class="blog-posts-grid blog-posts-grid--keep-reading">
+    <h3>Onze andere specialiteiten:</h3>
+		
+		
+		
+		
+		
+    <div class="container">
+		{% set diensten = craft.entries().section('diensten').all() %}
+		{% for dienst in diensten %}
+		   {% set dienstAfbeelding = dienst.afbeelding.one() %}
+		   <div class="post">
+			<div class="bg" style="background-image:url('images/unsplash/photo-1467659226669-a1360d97be2d.jpg');">
+			</div>
+			<a href="#" class="info">
+			  <span class="title">{{dienst.title}}</span>
+			  <span class="author">Guy Croes</span>
+			</a>
+		  </div>
+		{% endfor %}
+     
+    </div>
+  </div>
+	
+	
+	
+
+	
+
+{% include 'includes/footer.html' %}
+
+{% endblock %} 

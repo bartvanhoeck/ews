@@ -1,0 +1,53 @@
+{% set homeEntry = craft.entries().section('ewsEnergy').one() %}
+
+{% extends "_layout" %}
+
+{% set title = 'Ons Team' %}
+
+{% block content %}
+
+{% include 'includes/mainNav.html'%}
+
+  
+<!-- load banner -->
+{% for banner in homeEntry.banner.all() %}
+	{% include 'includes/banner.html' with {'banner' : banner, 'height' : '440px'}%}
+{% endfor %}
+	<div class="blog-sidebar-posts">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9">
+				<div class="blog-post" style="margin-top: 0 !important">
+					<div class="">
+					  <h3 class="blog-post-title">
+					   Waarom kiezen voor EWS?
+					  </h3>
+
+					  <div class="blog-post-content">
+						  {{homeEntry.uitgebreideOmschrijving}}
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<div class="col-lg-3 sidebar">
+				<div class="updates">
+            <i class="fa fa-rss"></i>
+            <strong>
+              Free blog updates
+            </strong>
+            <p>
+              Never miss an update. 
+              Sign up  to receieve an email whenever we post something in the blog.
+            </p>
+            <a href="#" class="btn-shadow btn-shadow-primary">Subscribe now</a>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+{% include 'includes/footer.html' %}
+
+{% endblock %} 

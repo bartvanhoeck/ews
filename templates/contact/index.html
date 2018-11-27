@@ -1,0 +1,79 @@
+{% set homeEntry = craft.entries().section('contact').one() %}
+
+{% extends "_layout" %}
+
+{% set title = 'Contact' %}
+
+{% block content %}
+
+{% include 'includes/mainNav.html'%}
+
+  
+<!-- load banner -->
+{% for banner in homeEntry.banner.all() %}
+	{% include 'includes/banner.html' with {'banner' : banner, 'height' : '590px;'}%}
+{% endfor %}
+	
+
+	
+	<div class="agency-contact-intro">
+    <div class="container">
+      <p>
+		  Lorem ipsum dolor sit amet, consectetur adipisicing elit. In vel sit aliquid aliquam at, consequuntur magnam laudantium vitae iusto accusamus, inventore, mollitia dignissimos!
+      </p>
+    </div>
+  </div>
+
+  <div class="agency-contact-form">
+    <div class="container">
+		<div class="row">
+		<div class="col-md-9">
+			<form>
+			<input type="text" placeholder="Uw naam" />
+			<input type="email" placeholder="Email adres" />
+			<input type="text" placeholder="Telefoonnummer" />
+			<textarea placeholder="Uw bericht" rows="6"></textarea>
+			<input type="submit" value="Versturen" />
+		  </form>
+		</div>
+		<div class="col-md-3" style="padding: 54px 0 54px 35px;">
+		{% for block in bedrijfsgegevens.gegevens.all() %}
+			
+			  <h4 style="color: #518dc3;"><i class="ion-ios-email-outline" style="margin-right: 10px;"></i>	Email</h4>
+			  <p>{{ block.emailadres }}</p>	
+			
+			  <h4 style="color: #518dc3;"><i class="ion-ios-location" style="margin-right: 10px;"></i> Adres</h4>
+			  <p>
+				{{ block.straat }} {{ block.huisnummer }} <br/>
+				  {{ block.postcode }} {{ block.gemeente }}
+			  </p>	
+			
+			  <h4 style="color: #518dc3;"><i class="ion-ios-telephone" style="margin-right: 10px;"></i> Telefoonnummer</h4>
+			  <p>{{ block.telefoonnummer }}</p>	
+			
+			  <h4 style="color: #518dc3;">Sociale media<br>
+				  <a href="#" title="facebook" style="color: #5b8ec9;"><i class="ion-social-facebook" style="margin-right: 10px;"></i></a>
+				  <a href="#" title="instagram" style="color: #5b8ec9;"><i class="ion-social-instagram" style="margin-right: 10px;"></i></a>
+				  <a href="#" title="twitter" style="color: #5b8ec9;"><i class="ion-social-twitter" style="margin-right: 10px;"></i></a>
+			</h4>
+		{% endfor %}
+		</div>
+      </div>
+    </div>
+  </div>
+
+
+  
+	
+
+
+	
+	
+	
+	
+
+	
+
+{% include 'includes/footer.html' %}
+
+{% endblock %} 

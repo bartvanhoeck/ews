@@ -1,0 +1,146 @@
+{% set homeEntry = craft.entries().section('home').one() %}
+
+{% extends "_layout" %}
+
+{% set title = homeEntry.title %}
+
+{% block content %}
+
+{% include 'includes/mainNav.html'%}
+
+  
+<!-- load banner -->
+{% for banner in homeEntry.banner.all() %}
+	{% include 'includes/banner.html' with {'banner' : banner, 'height' : '520px'}%}
+{% endfor %}
+	
+
+	
+	<div class="index-app-news">
+    <div class="container">
+      <span style="background: #5d839c;">Nieuw</span>
+      <strong>Lorem ipsum dolor sit amet</strong> Donec tempor efficitur nunc, eu ultrices quam. 
+      <a href="#">Meer informatie.</a>
+    </div>
+  </div>
+	
+	
+	<div class="index-browsers" style="    margin-top: 95px;">
+    <div class="container">
+      
+      <section class="row">
+        <div class="col-md-3">
+          <img src="{{siteUrl}}assets/images/demo/earth.gif" class="d-block img-fluid" style="    height: 150px;">
+        </div>
+        <div class="col-md-9 info">
+          <h4>
+            Eart Wind and Solar Energy
+          </h4>
+          <p>
+            Donec tempor efficitur nunc, eu ultrices quam.  Sed dictum felis erat, id feugiat diam consequat eget. Donec tempor efficitur nunc, eu ultrices quam. 
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+<br/>
+<br/>
+  
+	<div class="blog-cols-wrapper">
+    <div class="container">
+		<header>
+        <h3 class="text-center">Onze diensten</h3>
+        <p class="text-center">
+           Donec tempor efficitur nunc, eu ultrices quam.  Sed dictum felis erat, id feugiat diam conse
+        </p>
+      </header>
+		<br/>
+		<br/>
+		
+		{% set diensten = craft.entries().section('diensten').all() %}
+		{% for dienst in diensten %}
+		   {% set dienstAfbeelding = dienst.afbeelding.one() %}
+		   <a href="blog-post.html" class="post">
+			<div class="post-wrapper">
+			  <div class="post-bg" style="background-image: url('{{dienstAfbeelding.url}}');">
+			  </div>
+			  <div class="post-intro">
+				<div class="post-title">
+				  {{ dienst.title }}
+				</div>
+				<p class="post-description">{{ dienst.korteOmschrijving }}</p>
+			  </div>
+			</div>
+		  </a>
+		{% endfor %}
+      
+    </div>
+  </div>
+
+  <div class="business-single-client index-app" style="height: 320px;">
+    <div class="quote-wrapper" style="min-height: 320px;">
+      <p>
+        " Lorem ipsum dolor sit amet. Sed dictum felis erat, id feugiat diam consequat eget. Donec tempor efficitur nunc, eu ultrices quam.  Sed dictum felis erat, id feugiat diam consequat eget. Donec tempor efficitur nunc, eu ultrices quam."
+      </p>
+      <div class="author">
+        Bart Van Hoeck, Westrode
+      </div>
+    </div>
+  </div>
+	
+	
+	<div class="customer-testimonial" style="    margin-top: 120px;
+    background: #fafafa;
+    border-top: 1px solid #e2e1e1;
+    border-bottom: 1px solid #e2e1e1;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="{{siteUrl}}assets/images/customers/NM8A9844_edited2.jpg" class="img-fluid d-block customer-pic">
+        </div>
+        <div class="col-md-10">
+          <p>
+            <span>“</span>
+            Lorem ipsum dolor sit amet. Sed dictum felis erat, id feugiat diam consequat eget. Donec tempor efficitur nunc, eu ultrices quam. Sed dictum felis erat, id feugiat diam consequat eget. Donec tempor efficitur nunc, eu ultrices quam
+          </p>
+          <div class="author">
+            Bart Van Hoeck
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	
+	
+	<div class="index-clients">
+    <div class="container">
+      <header>
+        <h4>Wij werken samen met deze merken</h4>
+      </header>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/Ben-Q-logo.png">
+        </div>
+        <div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/lg_solarlogo_grande.png" style="    margin-top: 12px;">
+        </div>
+<div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/Ben-Q-logo.png">
+        </div>
+        <div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/lg_solarlogo_grande.png" style="    margin-top: 12px;">
+        </div>
+		  <div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/Ben-Q-logo.png">
+        </div>
+        <div class="col-12 col-md-3 col-lg">
+          <img class="img-fluid mb-4" src="{{siteUrl}}assets/images/logos/lg_solarlogo_grande.png" style="    margin-top: 12px;">
+        </div>
+      </div>
+    </div>
+  </div>
+	
+
+{% include 'includes/footer.html' %}
+
+{% endblock %} 
